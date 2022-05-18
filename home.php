@@ -128,29 +128,30 @@ if(isset($_GET['post'])){
     <div class="album py-5 bg-light">
       <div class="container">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        <?
-        $posts = get_all_posts();
-        foreach($posts as $post){
-          $c = Carbon::parse($post['posted_on']);
-        ?>
-          <div class="col">
-            <div class="card shadow-sm">
-              <div class="bd-placeholder-img card-img-top" style="height: 255px; width: 100%; background: url(<?=$post['image']?>); background-position: center; background-size: contain;background-repeat: no-repeat;">
-              </div>
-
-              <div class="card-body">
-                <p class="card-text"><?=$post['body']?></p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary"><?=$post['username']?></button>
-                    <button type="button" class="btn btn-sm btn-outline-danger">Delete</button>
+          <?
+          $posts = get_all_posts();
+          foreach($posts as $post){
+            $c = Carbon::parse($post['posted_on']);
+          ?>
+          <form method="POST" action="library/posts.php">
+            <div class="col">
+              <div class="card shadow-sm">
+                <div class="bd-placeholder-img card-img-top" style="height: 255px; width: 100%; background: url(<?=$post['image']?>); background-position: center; background-size: contain;background-repeat: no-repeat;">
+                </div>
+                <div class="card-body">
+                  <p class="card-text"><?=$post['body']?></p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-sm btn-outline-secondary"><?=$post['username']?></button>
+                      <button type="submit" class="btn btn-sm btn-outline-danger" name="delete" value="<?=$post['image']?>" value =  >Delete</button>
+                    </div>
+                    <small class="text-muted"><?=$c->diffForHumans()?></small>
                   </div>
-                  <small class="text-muted"><?=$c->diffForHumans()?></small>
                 </div>
               </div>
             </div>
-          </div>
-        <?}?>
+          </form>
+          <?}?>
         </div>
       </div>
     </div>

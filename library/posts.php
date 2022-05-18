@@ -1,6 +1,6 @@
 <?php
 
-require_once 'library/auth.php';
+require_once 'auth.php';
 
 /*
 1. do_post($body, $image, $username) - return post ID
@@ -38,4 +38,17 @@ function get_all_posts(){
 	} else {
 		return [];
 	}
+}
+
+if(array_key_exists('delete', $_POST))
+	delete_post();
+
+function delete_post(){
+	$image = $_POST['delete'];
+	$query = "DELETE FROM `posts` WHERE `image` = '$image';";
+	$conn = get_db_connection();
+	if(mysqli_query($conn, $query))
+		header("Location: ../home.php");
+	else
+		die(mysqli_error($conn));
 }
