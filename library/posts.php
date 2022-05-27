@@ -24,7 +24,24 @@ function do_post($body, $image, $username){
 }
 
 function get_all_posts(){
-	$query = "SELECT * FROM `posts`;";
+	$query = "SELECT * FROM `posts` ORDER BY `id` DESC;";
+	$conn = get_db_connection();
+	$username = $_COOKIE['username']; //vuln
+
+	$result = mysqli_query($conn, $query);
+	if(mysqli_num_rows($result) > 0){
+		$posts = [];
+		while($row = mysqli_fetch_assoc($result)){
+			$posts[] = $row;
+		}
+		return $posts;
+	} else {
+		return [];
+	}
+}
+
+function get_user_posts($username){
+	$query = "SELECT * FROM `posts` WHERE `username` = '$username';";
 	$conn = get_db_connection();
 	$username = $_COOKIE['username']; //vuln
 

@@ -72,7 +72,7 @@ if(isset($_COOKIE['username']) and isset($_COOKIE['token'])){
     }
     ?>
     <label for="inputUsername" class="visually-hidden">Username</label>
-    <input type="text" name="username" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
+    <input type="text" name="username" id="inputUsername" class="form-control" placeholder="Username" required autofocus value=<?echo isset($_GET['username']) ? $_GET['username'] : "" ?>>
     <label for="inputPassword" class="visually-hidden">Password</label>
     <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
     <input type="hidden" id="auth" name="type" value="login">

@@ -31,7 +31,7 @@ if(isset($_POST['type'])){
 		} else if ($r == -1){ //invalid OTP
 			header("Location: verify.php?username=".urlencode($username)."&error=1");
 		} else if($r){
-			header("Location: index.php?success=1");
+			header("Location: index.php?success=1&username=".$_POST['username']);
 		}
 	}
 } else {
