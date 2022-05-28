@@ -2,16 +2,6 @@
 
 require_once 'auth.php';
 
-/*
-1. do_post($body, $image, $username) - return post ID
-2. delete_post($id)
-3. like_post($id, $username)
-4. get_all_posts()
-5. get_like_count($post_id)
-6. has_liked($post_id)
-*/
-
-
 function do_post($body, $image, $username){
 	$query = "INSERT INTO `posts` (`username`, `body`, `image`) VALUES ('$username', '$body', '$image');";
 	$conn = get_db_connection();
