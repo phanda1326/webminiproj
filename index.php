@@ -52,7 +52,7 @@ if(isset($_COOKIE['username']) and isset($_COOKIE['token'])){
 
 <main class="form-signin">
   <form action="auth.php" method="POST">
-    <img class="mb-4" src="assets/brand/logo.jpg" alt="" width="250" height="250">
+    <img class="mb-4" src="assets/brand/logo.jpg" alt="" width="100" height="100">
     <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
     <?php
     if(isset($_GET['error']) and $_GET['error'] == 1){
