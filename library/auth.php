@@ -3,7 +3,7 @@
 $db_conn = NULL;
 $db_username = 'root';
 $db_password = '';
-$db_servername = 'localhost:3333';
+$db_servername = 'localhost';
 $db_name = 'webminiproj';
 
 $SALT = 'askhfbauygb23iory7298dhkewhbfq8e7gfy';
